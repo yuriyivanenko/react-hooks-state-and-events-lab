@@ -1,5 +1,6 @@
-import React, { act, useState } from "react";
+import React, { useState } from "react";
 import Item from "./Item";
+import Filter from "./Filter";
 
 function ShoppingList({ items }) {
   const [cart, setCart] = useState(items)
@@ -52,14 +53,7 @@ function ShoppingList({ items }) {
 
   return (
     <div className="ShoppingList">
-      <div className="Filter">
-        <select name="filter" onChange={handleFilter}>
-          <option value="All">Filter by category</option>
-          <option value="Produce">Produce</option>
-          <option value="Dairy">Dairy</option>
-          <option value="Dessert">Dessert</option>
-        </select>
-      </div>
+      <Filter filterCart={handleFilter}/>
       <ul className="Items">
         {cart.map((item) => (
           <Item 
@@ -72,7 +66,7 @@ function ShoppingList({ items }) {
         ))}
       </ul>
     </div>
-  );
+  )
 }
 
-export default ShoppingList;
+export default ShoppingList
